@@ -1,0 +1,41 @@
+{
+    "name": "hassankhan/frontman",
+    "description": "A simple package to create your own Laravel-style facades",
+    "keywords": [
+        "hassankhan",
+        "frontman",
+        "facades",
+
+    ],
+    "homepage": "https://github.com/hassankhan/frontman",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hassan Khan",
+            "email": "contact@hassankhan.me",
+            "homepage": "http://hassankhan.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Frontman\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Frontman\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
