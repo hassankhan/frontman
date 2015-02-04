@@ -31,15 +31,15 @@ class MyClass
     }
 }
 
-class Proxy extends \Frontman\Frontman
+class MyProxy extends \Frontman\Proxy
 {
-    public static function getRootClass()
+    public static function getRealClass()
     {
         return 'MyNamespace\MyClass';
     }
 }
 
-Proxy::foo();   // 'Foo'
+MyProxy::foo();   // 'Foo'
 ```
 
 ## Contributing
