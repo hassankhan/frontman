@@ -17,7 +17,7 @@ class Proxy
     /**
      * @var array
      */
-    protected static $rootClasses = array();
+    protected static $realClasses = array();
 
     /**
      * Since we don't need a constructor for the proxy class, we just set its
@@ -39,12 +39,12 @@ class Proxy
     public static function __callStatic($method, $arguments)
     {
         $realClass = static::getRealClass();
-        if (!isset(self::$rootClasses[$realClass])) {
-            self::$rootClasses[$realClass] = new $realClass;
+        if (!isset(self::$realClasses[$realClass])) {
+            self::$realClasses[$realClass] = new $realClass;
         }
 
 
-        $objectMethod = array(self::$rootClasses[$realClass], $method);
+        $objectMethod = array(self::$realClasses[$realClass], $method);
         if (is_callable($objectMethod)) {
             return call_user_func_array($objectMethod, $arguments);
         }
