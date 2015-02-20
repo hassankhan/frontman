@@ -23,7 +23,9 @@ class Proxy
      * Since we don't need a constructor for the proxy class, we just set its
      * visibility to private
      */
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
      * This method calls the root class with `$arguments` as parameters and
@@ -51,5 +53,4 @@ class Proxy
 
         throw new \BadMethodCallException("Method $method does not exist");
     }
-
 }

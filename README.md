@@ -23,6 +23,8 @@ $ composer require hassankhan/frontman
 
 namespace MyNamespace;
 
+use Frontman\Proxy;
+
 class MyClass
 {
     public function foo()
@@ -31,7 +33,7 @@ class MyClass
     }
 }
 
-class MyProxy extends \Frontman\Proxy
+class MyProxy extends Proxy
 {
     public static function getRealClass()
     {
