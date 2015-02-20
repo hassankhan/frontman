@@ -1,0 +1,35 @@
+{
+  "name": "frontman",
+  "version": "0.1.2",
+  "description": "A simple package to create your own Laravel-style facades",
+  "main": "src/Proxy.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hassankhan/frontman"
+  },
+  "keywords": [
+    "hassankhan",
+    "frontman",
+    "facades"
+  ],
+  "author": "Hassan <contact@hassankhan.me> (http://hassankhan.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hassankhan/frontman/issues"
+  },
+  "homepage": "https://github.com/hassankhan/frontman",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-phpcs": "^0.5.0",
+    "gulp-phpunit": "^0.7.0",
+    "lodash": "^3.3.0"
+  }
+}
