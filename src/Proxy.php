@@ -13,7 +13,6 @@ namespace Frontman;
  */
 class Proxy
 {
-
     /**
      * @var array
      */
@@ -27,7 +26,7 @@ class Proxy
 
     /**
      * This method calls the root class with `$arguments` as parameters and
-     * returns its' result
+     * returns its result
      *
      * @param  string $method
      * @param  mixed  $arguments
@@ -40,9 +39,8 @@ class Proxy
     {
         $realClass = static::getRealClass();
         if (!isset(self::$rootClasses[$realClass])) {
-            self::$rootClasses[$realClass] = new $realClass;
+            self::$rootClasses[$realClass] = new $realClass();
         }
-
 
         $objectMethod = array(self::$rootClasses[$realClass], $method);
         if (is_callable($objectMethod)) {
@@ -51,5 +49,4 @@ class Proxy
 
         throw new \BadMethodCallException("Method $method does not exist");
     }
-
 }
