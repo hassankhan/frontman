@@ -13,7 +13,6 @@ namespace Frontman;
  */
 class Proxy
 {
-
     /**
      * @var array
      */
@@ -29,7 +28,7 @@ class Proxy
 
     /**
      * This method calls the root class with `$arguments` as parameters and
-     * returns its' result
+     * returns its result
      *
      * @param  string $method
      * @param  mixed  $arguments
