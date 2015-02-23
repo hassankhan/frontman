@@ -5,15 +5,15 @@ namespace Frontman\Tests\Fixtures;
 use Frontman\Proxy;
 use Frontman\ProxyInterface;
 
-class Fixture extends Proxy implements ProxyInterface
+class ConstructorFixture extends Proxy implements ProxyInterface
 {
     public static function getRealClass()
     {
-        return 'Frontman\Tests\Fixtures\FixtureClass';
+        return 'Frontman\Tests\Fixtures\ConstructorFixtureClass';
     }
 
     public static function getConstructorArguments()
     {
-        return array();
+        return array('hello');
     }
 }

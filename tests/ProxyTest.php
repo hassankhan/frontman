@@ -3,8 +3,9 @@
 namespace Frontman\Tests;
 
 use Frontman\Tests\Fixtures\Fixture;
+use Frontman\Tests\Fixtures\ConstructorFixture;
 
-class FrontmanTest extends \PHPUnit_Framework_TestCase
+class ProxyTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -31,7 +32,17 @@ class FrontmanTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers Frontman\Proxy::__callStatic()
      */
-    public function testMethodCallOnRootClass()
+    public function testRealClassConstructor()
+    {
+        $expected = 'Foo';
+        $actual   = ConstructorFixture::foo();
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @covers Frontman\Proxy::__callStatic()
+     */
+    public function testMethodCallOnRealClass()
     {
         $expected = 'Foo';
         $actual   = Fixture::foo();
@@ -42,7 +53,7 @@ class FrontmanTest extends \PHPUnit_Framework_TestCase
      * @covers            Frontman\Proxy::__callStatic()
      * @expectedException BadMethodCallException
      */
-    public function testUndefinedMethodCallOnRootClass()
+    public function testUndefinedMethodCallOnRealClass()
     {
         Fixture::bar();
     }

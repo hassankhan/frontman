@@ -11,18 +11,39 @@ namespace Frontman;
  * @license    MIT
  * @since      0.1
  */
-class Proxy
+class Proxy implements ProxyInterface
 {
     /**
      * @var array
      */
-    protected static $rootClasses = array();
+    protected static $realClasses = array();
 
     /**
      * Since we don't need a constructor for the proxy class, we just set its
      * visibility to private
+     * @codeCoverageIgnore
      */
-    private function __construct() {}
+    private function __construct()
+    {
+    }
+
+    /**
+     * {@inheritDoc}
+     * @codeCoverageIgnore
+     */
+    public static function getRealClass()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritDoc}
+     * @codeCoverageIgnore
+     */
+    public static function getConstructorArguments()
+    {
+        return array();
+    }
 
     /**
      * This method calls the root class with `$arguments` as parameters and
@@ -38,11 +59,13 @@ class Proxy
     public static function __callStatic($method, $arguments)
     {
         $realClass = static::getRealClass();
-        if (!isset(self::$rootClasses[$realClass])) {
-            self::$rootClasses[$realClass] = new $realClass();
+        if (!isset(self::$realClasses[$realClass])) {
+            self::$realClasses[$realClass] = new $realClass(static::getConstructorArguments());
+            $bits = explode("\\", $realClass);
         }
 
-        $objectMethod = array(self::$rootClasses[$realClass], $method);
+
+        $objectMethod = array(self::$realClasses[$realClass], $method);
         if (is_callable($objectMethod)) {
             return call_user_func_array($objectMethod, $arguments);
         }
