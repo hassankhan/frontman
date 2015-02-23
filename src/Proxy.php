@@ -11,7 +11,7 @@ namespace Frontman;
  * @license    MIT
  * @since      0.1
  */
-class Proxy
+class Proxy implements ProxyInterface
 {
     /**
      * @var array
@@ -21,9 +21,28 @@ class Proxy
     /**
      * Since we don't need a constructor for the proxy class, we just set its
      * visibility to private
+     * @codeCoverageIgnore
      */
     private function __construct()
     {
+    }
+
+    /**
+     * {@inheritDoc}
+     * @codeCoverageIgnore
+     */
+    public static function getRealClass()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritDoc}
+     * @codeCoverageIgnore
+     */
+    public static function getConstructorArguments()
+    {
+        return array();
     }
 
     /**

@@ -21,9 +21,8 @@ $ composer require hassankhan/frontman
 
 ```php
 
-namespace MyNamespace;
-
 use Frontman\Proxy;
+use Frontman\ProxyInterface;
 
 class MyClass
 {
@@ -33,15 +32,44 @@ class MyClass
     }
 }
 
-class MyProxy extends Proxy
+class MyOtherClass
 {
-    public static function getRealClass()
+    protected $value;
+
+    public function __construct($value)
     {
-        return 'MyNamespace\MyClass';
+        $this->value = $value;
+    }
+
+    public function bar()
+    {
+        echo 'Bar';
     }
 }
 
-MyProxy::foo();   // 'Foo'
+class MyProxy extends Proxy implements ProxyInterface
+{
+    public static function getRealClass()
+    {
+        return 'MyClass';
+    }
+}
+
+class MyOtherProxy extends Proxy implements ProxyInterface
+{
+    public static function getRealClass()
+    {
+        return 'MyOtherClass';
+    }
+
+    public static function getConstructorArguments()
+    {
+        return array('5');
+    }
+}
+
+MyProxy::foo();         // 'Foo'
+MyOtherProxy::bar();    // 'Bar'
 ```
 
 ## Contributing
