@@ -41,7 +41,8 @@ class Proxy
     {
         $realClass = static::getRealClass();
         if (!isset(self::$realClasses[$realClass])) {
-            self::$realClasses[$realClass] = new $realClass;
+            self::$realClasses[$realClass] = new $realClass(static::getConstructorArguments());
+            $bits = explode("\\", $realClass);
         }
 
 

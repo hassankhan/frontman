@@ -3,6 +3,7 @@
 namespace Frontman\Tests;
 
 use Frontman\Tests\Fixtures\Fixture;
+use Frontman\Tests\Fixtures\ConstructorFixture;
 
 class ProxyTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,6 +27,16 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
+    }
+
+    /**
+     * @covers Frontman\Proxy::__callStatic()
+     */
+    public function testRealClassConstructor()
+    {
+        $expected = 'Foo';
+        $actual   = ConstructorFixture::foo();
+        $this->assertEquals($expected, $actual);
     }
 
     /**
