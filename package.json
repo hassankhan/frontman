@@ -1,6 +1,6 @@
 {
   "name": "frontman",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "A simple package to create your own Laravel-style facades",
   "main": "src/Proxy.php",
   "directories": {
