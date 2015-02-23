@@ -61,7 +61,6 @@ class Proxy implements ProxyInterface
         $realClass = static::getRealClass();
         if (!isset(self::$realClasses[$realClass])) {
             self::$realClasses[$realClass] = new $realClass(static::getConstructorArguments());
-            $bits = explode("\\", $realClass);
         }
 
 
